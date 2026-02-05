@@ -8,14 +8,16 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build with Buildozer
-        uses: ArtemSBulgakov/buildozer-action@v1
+        uses: ArtemSBulgakov/buildozer-action@v1.6.1  # Version specify karein
         id: buildozer
         with:
           command: buildozer android debug
           buildozer_version: master
+        env:
+          USER: runner  # Yeh line error fix karegi
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: package
-          path: ${{ steps.buildozer.outputs.filename }}
+          path: bin/*.apk  # Direct path taaki file mil jaye
