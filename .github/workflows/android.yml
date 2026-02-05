@@ -3,21 +3,21 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04  # Stable version use karein
     steps:
       - uses: actions/checkout@v4
 
       - name: Build with Buildozer
-        uses: ArtemSBulgakov/buildozer-action@v1.6.1  # Version specify karein
+        uses: ArtemSBulgakov/buildozer-action@v1
         id: buildozer
         with:
           command: buildozer android debug
           buildozer_version: master
         env:
-          USER: runner  # Yeh line error fix karegi
+          USER: runner  # Ye previous error (invalid user) ko fix karega
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: package
-          path: bin/*.apk  # Direct path taaki file mil jaye
+          path: bin/*.apk
