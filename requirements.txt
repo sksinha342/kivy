@@ -1,0 +1,6 @@
+kivy==2.3.0
+Kivy-Garden==0.1.5
+Cython==0.29.33
+# Agar koi extra library use kar rahe hain toh niche add karein:
+# requests
+# pillow
